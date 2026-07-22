@@ -94,6 +94,35 @@ local default_plugins = {
     end,
   },
 
+  -- git conflict
+  {
+    "akinsho/git-conflict.nvim",
+    version = "*",
+    event = { "BufReadPost", "BufNewFile" },
+
+    opts = {
+      default_mappings = true,
+      default_commands = true,
+
+      highlights = {
+        current = "GitConflictCurrent",
+        incoming = "GitConflictIncoming",
+      },
+    },
+
+    config = function(_, opts)
+      require("git-conflict").setup(opts)
+
+      vim.api.nvim_set_hl(0, "GitConflictCurrent", {
+        bg = "#3b4261",
+      })
+
+      vim.api.nvim_set_hl(0, "GitConflictIncoming", {
+        bg = "#294436",
+      })
+    end,
+  },
+
   -- lsp stuff
   {
     "williamboman/mason.nvim",
@@ -272,11 +301,17 @@ local default_plugins = {
   },
 
   {
-    "jose-elias-alvarez/null-ls.nvim",
+    "nvimtools/none-ls.nvim",
     ft = "go",
-    opts = function ()
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    opts = function()
       return require "custom.configs.null-ls"
-    end
+    end,
+    config = function(_, opts)
+      require("null-ls").setup(opts)
+    end,
   }
 }
 

@@ -1,4 +1,4 @@
-## nvim-dotfiles (`nvChad` - `MacOS`)
+## nvim-config (`nvChad` - `MacOS`)
 
 ### How to use ?
 
@@ -14,5 +14,5 @@ $ brew install neovim
 
 - Install `nvim-config`
 ```
-$ git clone https://github.com/william1nguyen/nvim-dotfiles.git ~/.config/nvim
+$ git clone https://github.com/william1nguyen/nvim-config.git ~/.config/nvim
 ```
