@@ -15,6 +15,7 @@ A personal Neovim configuration based on **NvChad v2**, managed with
 - File management with NvimTree
 - File, text, and buffer search with Telescope
 - Git integration with Gitsigns and `git-conflict.nvim`
+- Live Markdown preview with Mermaid and KaTeX rendering
 - Integrated terminals, commenting, color highlighting, and indent guides
 
 ## Prerequisites
@@ -24,6 +25,7 @@ Install the following before using this configuration:
 - [Neovim](https://neovim.io/) 0.11 or later
 - [Git](https://git-scm.com/)
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
+- [Node.js](https://nodejs.org/) for building the Markdown preview frontend
 - [Go](https://go.dev/) for Go development features
 - A [Nerd Font](https://www.nerdfonts.com/) for icons
 
@@ -34,7 +36,7 @@ Install the following before using this configuration:
 On macOS, install the command-line dependencies with Homebrew:
 
 ```sh
-brew install neovim git ripgrep go
+brew install neovim git ripgrep node go
 ```
 
 If Homebrew is not installed, follow the instructions at
@@ -99,6 +101,23 @@ Install the Go formatters used by `none-ls`:
 
 Opening a Go file also loads `gopher.nvim`, which installs its additional Go
 tools automatically.
+
+### Markdown preview
+
+Open a Markdown file and use:
+
+- `<leader>mp` to start or toggle the live preview
+- `<leader>ms` to stop the preview
+
+The preview opens in the default browser, follows the cursor, refreshes while
+editing, and supports Mermaid fenced code blocks:
+
+````markdown
+```mermaid
+flowchart LR
+  A[Write Markdown] --> B[Preview]
+```
+````
 
 Verify the installation with:
 
