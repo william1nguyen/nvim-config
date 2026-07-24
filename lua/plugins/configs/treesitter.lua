@@ -7,7 +7,9 @@ local options = {
     "gosum",
     "gomod",
     "gowork",
-    "gotmpl"
+    "gotmpl",
+    "markdown",
+    "markdown_inline",
   },
 
   highlight = {

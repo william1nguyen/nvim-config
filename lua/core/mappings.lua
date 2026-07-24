@@ -292,6 +292,15 @@ M.telescope = {
   },
 }
 
+M.markdown_preview = {
+  plugin = true,
+
+  n = {
+    ["<leader>mp"] = { "<cmd> MarkdownPreviewToggle <CR>", "Toggle Markdown preview" },
+    ["<leader>ms"] = { "<cmd> MarkdownPreviewStop <CR>", "Stop Markdown preview" },
+  },
+}
+
 M.nvterm = {
   plugin = true,
 

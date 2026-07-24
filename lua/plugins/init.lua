@@ -286,6 +286,19 @@ local default_plugins = {
     end,
   },
 
+  {
+    "iamcco/markdown-preview.nvim",
+    ft = { "markdown" },
+    cmd = { "MarkdownPreview", "MarkdownPreviewStop", "MarkdownPreviewToggle" },
+    build = function()
+      vim.fn["mkdp#util#install_sync"](1)
+    end,
+    init = function()
+      require("plugins.configs.markdown_preview").setup()
+      require("core.utils").load_mappings "markdown_preview"
+    end,
+  },
+
   -- Only load whichkey after all the gui
   {
     "folke/which-key.nvim",
