@@ -111,15 +111,21 @@ local default_plugins = {
     },
 
     config = function(_, opts)
+      local function set_conflict_highlights()
+        vim.api.nvim_set_hl(0, "GitConflictCurrent", { bg = "#3b4261" })
+        vim.api.nvim_set_hl(0, "GitConflictIncoming", { bg = "#294436" })
+      end
+
+      -- git-conflict reads these groups during setup, so they must exist first.
+      -- Recreate them before the plugin's own ColorScheme callback reads them.
+      local group = vim.api.nvim_create_augroup("CustomGitConflictHighlights", { clear = true })
+      vim.api.nvim_create_autocmd("ColorScheme", {
+        group = group,
+        callback = set_conflict_highlights,
+      })
+
+      set_conflict_highlights()
       require("git-conflict").setup(opts)
-
-      vim.api.nvim_set_hl(0, "GitConflictCurrent", {
-        bg = "#3b4261",
-      })
-
-      vim.api.nvim_set_hl(0, "GitConflictIncoming", {
-        bg = "#294436",
-      })
     end,
   },
 
